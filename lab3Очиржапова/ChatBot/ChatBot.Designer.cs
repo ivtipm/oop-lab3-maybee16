@@ -59,8 +59,9 @@
             this.richTextBox_messages.Size = new System.Drawing.Size(776, 295);
             this.richTextBox_messages.TabIndex = 0;
             this.richTextBox_messages.Text = "";
+            this.richTextBox_messages.TextChanged += new System.EventHandler(this.RichTextBox_messages_TextChanged);
             // 
-            // Form2
+            // ChatBot
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -68,7 +69,7 @@
             this.Controls.Add(this.button_send);
             this.Controls.Add(this.textBox_messages);
             this.Controls.Add(this.richTextBox_messages);
-            this.Name = "Form2";
+            this.Name = "ChatBot";
             this.Text = "Form2";
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -13,6 +13,7 @@ namespace ChatBot
     public partial class ChatBot : Form
     {
         Autorization frm;
+        Reply rpl = new Reply();
         string s;
         public ChatBot(Autorization frm1)
         {
@@ -27,7 +28,6 @@ namespace ChatBot
 
         private void Button_send_Click(object sender, EventArgs e) //отправка сообщения
         {
-            //m.SetMessage(s);
             if (textBox_messages.Text == "")
                 richTextBox_messages.Text += "Вы пытаетесь отправить пустое сообщение" + "\r\n\r\n";
             else
@@ -35,6 +35,12 @@ namespace ChatBot
                 richTextBox_messages.Text += frm.textBox_name.Text + "  " + s + "\r\n\r\n";
             }
             textBox_messages.Clear();
+
+        }
+
+        private void RichTextBox_messages_TextChanged(object sender, EventArgs e)
+        {
+            richTextBox_messages.Text += rpl.MessageReply(s) + "\r\n\r\n";
         }
     }
 }
