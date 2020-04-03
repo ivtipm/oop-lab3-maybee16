@@ -33,7 +33,12 @@ namespace ChatBot
                 return DateTime.Now.Date.ToString();
             if (m == "какой сейчас день недели?")
                 return DateTime.Now.DayOfWeek.ToString();
-            return "Я вас не понимаю!";
+           
+                Calculator calc = new Calculator();
+
+                return calc.Calculate(m);
+            
+            //return "Я вас не понимаю!";
         }
     }
 }

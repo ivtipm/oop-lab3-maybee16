@@ -62,6 +62,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Calculator.cs" />
     <Compile Include="Reply.cs" />
     <Compile Include="Autorization.cs">
       <SubType>Form</SubType>
