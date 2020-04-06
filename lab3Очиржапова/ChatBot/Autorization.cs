@@ -12,7 +12,7 @@ namespace ChatBot
 {
     public partial class Autorization : Form
     {
-        string s;
+        public string s;
         public Autorization()
         {
             InitializeComponent();

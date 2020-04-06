@@ -33,9 +33,10 @@ namespace ChatBot
                 richTextBox_messages.Text += "Вы пытаетесь отправить пустое сообщение" + "\r\n\r\n";
             else
             {
-                richTextBox_messages.Text += s + "\r\n\r\n";
-                richTextBox_messages.Text += rpl.MessageReply(s) + "\r\n\r\n";
+                UserName();
+                BotName();
             }
+            richTextBox_messages.ScrollToCaret();
             textBox_messages.Clear();
         }
 
@@ -81,6 +82,26 @@ namespace ChatBot
             {
                 MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void UserName()
+        {
+            string s = frm.TextBox_name.Text;
+            var startOfSelection = richTextBox_messages.TextLength;
+            richTextBox_messages.AppendText(s);
+            richTextBox_messages.Select(startOfSelection, s.Length);
+            richTextBox_messages.SelectionColor = Color.Red;
+            richTextBox_messages.Text += "  " + s + "\r\n\r\n";
+        }
+
+        private void BotName()
+        {
+            string s = "Mr.Bot";
+            var startOfSelection = richTextBox_messages.TextLength;
+            richTextBox_messages.AppendText(s);
+            richTextBox_messages.Select(startOfSelection, s.Length);
+            richTextBox_messages.SelectionColor = Color.Blue;
+            richTextBox_messages.Text += "  " + rpl.MessageReply(s) + "\r\n\r\n";
         }
     }
 }
