@@ -14,7 +14,6 @@ namespace ChatBot
     public partial class ChatBot : Form
     {
         Autorization frm;
-        Reply rpl = new Reply();
         string s;
         public ChatBot(Autorization frm1)
         {
@@ -33,16 +32,11 @@ namespace ChatBot
                 richTextBox_messages.Text += "Вы пытаетесь отправить пустое сообщение" + "\r\n\r\n";
             else
             {
-                UserName();
-                BotName();
+                UserMessage();
+                BotMessage();
             }
             richTextBox_messages.ScrollToCaret();
             textBox_messages.Clear();
-        }
-
-        private void RichTextBox_messages_TextChanged(object sender, EventArgs e)
-        {
-            
         }
 
         private void ClearChatToolStripMenuItem_Click(object sender, EventArgs e)
@@ -84,22 +78,23 @@ namespace ChatBot
             }
         }
 
-        private void UserName()
+        private void UserMessage()
         {
-            string s = frm.TextBox_name.Text;
+            string n = frm.TextBox_name.Text;
             var startOfSelection = richTextBox_messages.TextLength;
-            richTextBox_messages.AppendText(s);
-            richTextBox_messages.Select(startOfSelection, s.Length);
+            richTextBox_messages.AppendText(n);
+            richTextBox_messages.Select(startOfSelection, n.Length);
             richTextBox_messages.SelectionColor = Color.Red;
             richTextBox_messages.Text += "  " + s + "\r\n\r\n";
         }
 
-        private void BotName()
+        private void BotMessage()
         {
-            string s = "Mr.Bot";
+            Reply rpl = new Reply();
+            string n = "Mr.Bot";
             var startOfSelection = richTextBox_messages.TextLength;
-            richTextBox_messages.AppendText(s);
-            richTextBox_messages.Select(startOfSelection, s.Length);
+            richTextBox_messages.AppendText(n);
+            richTextBox_messages.Select(startOfSelection, n.Length);
             richTextBox_messages.SelectionColor = Color.Blue;
             richTextBox_messages.Text += "  " + rpl.MessageReply(s) + "\r\n\r\n";
         }

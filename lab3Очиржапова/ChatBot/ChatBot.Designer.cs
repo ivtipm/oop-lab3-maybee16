@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChatBot));
             this.textBox_messages = new System.Windows.Forms.TextBox();
             this.button_send = new System.Windows.Forms.Button();
             this.richTextBox_messages = new System.Windows.Forms.RichTextBox();
@@ -43,7 +44,7 @@
             // 
             this.textBox_messages.Location = new System.Drawing.Point(0, 351);
             this.textBox_messages.Name = "textBox_messages";
-            this.textBox_messages.Size = new System.Drawing.Size(671, 22);
+            this.textBox_messages.Size = new System.Drawing.Size(652, 22);
             this.textBox_messages.TabIndex = 1;
             this.textBox_messages.TextChanged += new System.EventHandler(this.TextBox_messages_TextChanged);
             // 
@@ -53,9 +54,9 @@
             this.button_send.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button_send.Font = new System.Drawing.Font("Monotype Corsiva", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_send.ForeColor = System.Drawing.Color.DarkRed;
-            this.button_send.Location = new System.Drawing.Point(677, 347);
+            this.button_send.Location = new System.Drawing.Point(658, 347);
             this.button_send.Name = "button_send";
-            this.button_send.Size = new System.Drawing.Size(111, 39);
+            this.button_send.Size = new System.Drawing.Size(130, 39);
             this.button_send.TabIndex = 2;
             this.button_send.Text = "Отправить";
             this.button_send.UseVisualStyleBackColor = false;
@@ -73,7 +74,6 @@
             this.richTextBox_messages.Size = new System.Drawing.Size(800, 316);
             this.richTextBox_messages.TabIndex = 0;
             this.richTextBox_messages.Text = "";
-            this.richTextBox_messages.TextChanged += new System.EventHandler(this.RichTextBox_messages_TextChanged);
             // 
             // menuStrip1
             // 
@@ -134,6 +134,7 @@
             this.Controls.Add(this.richTextBox_messages);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "ChatBot";
             this.Text = "Mr. Bot";

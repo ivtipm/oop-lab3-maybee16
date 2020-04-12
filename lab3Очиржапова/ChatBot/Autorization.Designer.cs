@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Autorization));
             this.button_name = new System.Windows.Forms.Button();
             this.label_name = new System.Windows.Forms.Label();
             this.TextBox_name = new System.Windows.Forms.RichTextBox();
@@ -40,7 +41,7 @@
             this.button_name.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button_name.ForeColor = System.Drawing.Color.DarkRed;
             this.button_name.Location = new System.Drawing.Point(232, 81);
-            this.button_name.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_name.Margin = new System.Windows.Forms.Padding(4);
             this.button_name.Name = "button_name";
             this.button_name.Size = new System.Drawing.Size(110, 34);
             this.button_name.TabIndex = 0;
@@ -62,12 +63,11 @@
             // TextBox_name
             // 
             this.TextBox_name.Location = new System.Drawing.Point(185, 18);
-            this.TextBox_name.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TextBox_name.Margin = new System.Windows.Forms.Padding(4);
             this.TextBox_name.Name = "TextBox_name";
             this.TextBox_name.Size = new System.Drawing.Size(156, 37);
             this.TextBox_name.TabIndex = 3;
             this.TextBox_name.Text = "";
-            this.TextBox_name.TextChanged += new System.EventHandler(this.TextBox_name_TextChanged);
             // 
             // Autorization
             // 
@@ -79,7 +79,8 @@
             this.Controls.Add(this.label_name);
             this.Controls.Add(this.button_name);
             this.Font = new System.Drawing.Font("Monotype Corsiva", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Autorization";
             this.Text = "Авторизация";
             this.ResumeLayout(false);

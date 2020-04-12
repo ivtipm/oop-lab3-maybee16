@@ -25,10 +25,5 @@ namespace ChatBot
             f.ShowDialog();
             Hide();
         }
-
-        private void TextBox_name_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
     }
 }

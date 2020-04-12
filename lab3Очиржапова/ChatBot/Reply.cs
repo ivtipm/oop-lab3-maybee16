@@ -22,7 +22,7 @@ namespace ChatBot
             if (m.Contains("как дела"))
                 return rpl = "Отлично!";
             if (m.Contains("который час"))
-                return DateTime.Now.TimeOfDay.ToString();
+                return DateTime.Now.Hour.ToString()+":"+DateTime.Now.Minute.ToString();
             if (m.Contains("какое сегодня число"))
                 return DateTime.Now.Day.ToString();
             if (m.Contains("какой сейчас месяц"))
@@ -30,7 +30,7 @@ namespace ChatBot
             if (m.Contains("какой сейчас год"))
                 return DateTime.Now.Year.ToString();
             if (m.Contains("какая сейчас дата"))
-                return DateTime.Now.Date.ToString();
+                return DateTime.Now.Day.ToString() + "." + DateTime.Now.Month.ToString() + "." + DateTime.Now.Year.ToString();
             if (m.Contains("какой сейчас день недели"))
                 return DateTime.Now.DayOfWeek.ToString();
             if (m.Contains("реши"))
@@ -39,7 +39,7 @@ namespace ChatBot
                 string pattern = @"[реши]\s";
                 string[] elements = System.Text.RegularExpressions.Regex.Split(m, pattern);
                 foreach (var element in elements)
-                    rpl += element;
+                    rpl = element;
                 return calc.Calculate(rpl);
             }
             if (m.Contains("погода") || m.Contains("новости") || m.Contains("курс") || m.Contains("что такое") || m.Contains("найди"))
