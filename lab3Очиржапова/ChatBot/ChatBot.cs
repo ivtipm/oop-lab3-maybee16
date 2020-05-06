@@ -13,12 +13,18 @@ namespace ChatBot
 {
     public partial class ChatBot : Form
     {
-        Autorization frm;
+        Autorization frm = new Autorization();
+        Reply rpl = new Reply();
         string s;
         public ChatBot(Autorization frm1)
         {
             InitializeComponent();
             frm = frm1;
+        }
+
+        public ChatBot()
+        {
+
         }
 
         private void TextBox_messages_TextChanged(object sender, EventArgs e)
@@ -46,36 +52,12 @@ namespace ChatBot
 
         private void SaveHistoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SaveFileDialog saveFile = new SaveFileDialog();
-            saveFile.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
-            saveFile.FilterIndex = 2;
-            saveFile.RestoreDirectory = true;
-            if (saveFile.ShowDialog() == DialogResult.OK)
-                File.WriteAllText(saveFile.FileName, richTextBox_messages.Text);
+            rpl.SaveHistory(this);
         }
 
         private void DownloadHistoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            try
-            {
-                using (OpenFileDialog ofd = new OpenFileDialog() { Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*", Multiselect = false, ValidateNames = true })
-                {
-                    if (ofd.ShowDialog() == DialogResult.OK)
-                    {
-                        string filename = ofd.FileName;
-                        string file = System.IO.File.ReadAllText(filename);
-                        richTextBox_messages.Text = file;
-                    }
-                    else
-                    {
-                        richTextBox_messages.AppendText("Не удалось загрузить историю");
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            rpl.DownloadHistory(this);
         }
 
         private void UserMessage()
@@ -90,7 +72,6 @@ namespace ChatBot
 
         private void BotMessage()
         {
-            Reply rpl = new Reply();
             string n = "Mr.Bot";
             var startOfSelection = richTextBox_messages.TextLength;
             richTextBox_messages.AppendText(n);

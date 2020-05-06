@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.IO;
 
 namespace ChatBot
 {
     public class Reply
     {
         string rpl;
-
         public Reply()
         {
             rpl = "";
@@ -52,6 +53,40 @@ namespace ChatBot
         private void SearchQuery(string m)
         {
             System.Diagnostics.Process.Start("https://yandex.ru/search/?text=" + m);
+        }
+
+        public void SaveHistory(ChatBot c)
+        {
+            SaveFileDialog saveFile = new SaveFileDialog();
+            saveFile.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+            saveFile.FilterIndex = 2;
+            saveFile.RestoreDirectory = true;
+            if (saveFile.ShowDialog() == DialogResult.OK)
+                File.WriteAllText(saveFile.FileName, c.richTextBox_messages.Text);
+        }
+
+        public void DownloadHistory(ChatBot c)
+        {
+            try
+            {
+                using (OpenFileDialog ofd = new OpenFileDialog() { Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*", Multiselect = false, ValidateNames = true })
+                {
+                    if (ofd.ShowDialog() == DialogResult.OK)
+                    {
+                        string filename = ofd.FileName;
+                        string file = System.IO.File.ReadAllText(filename);
+                        c.richTextBox_messages.Text = file;
+                    }
+                    else
+                    {
+                        c.richTextBox_messages.AppendText("Не удалось загрузить историю");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
